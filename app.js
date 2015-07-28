@@ -74,7 +74,13 @@ app.use(function (req, res, next) {
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// passport config
+var User = require('./models/user');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
+mongoose.connect('mongodb://localhost/nodeauth');
 
 app.use('/', routes);
 app.use('/users', users);
