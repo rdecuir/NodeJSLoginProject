@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 Log In
+  p Please login below
+  .container-login
+    form(method='post', action='/users/login', enctype='application/json')
+        .form-group
+            label Username
+            input.form-control(name='username', type='text')
+        .form-group
+            label Password
+            input.form-control(name='password', type='password')
+        button.btn.pull-right.btn-info.btn-lg(name='submit', type='submit') Log In
